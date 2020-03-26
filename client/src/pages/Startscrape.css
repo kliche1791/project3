@@ -9,6 +9,5 @@
 }
 .scrollable {
   overflow-y: auto;
-  max-height: 5%;
   color: rgb(5, 84, 121);
 }
