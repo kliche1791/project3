@@ -1,6 +1,6 @@
 # Project 3 MyNewsNow 
 ​
- Kiran Kesari, Carlos Castrillon, Shirley Wang, Brigid Woelery
+ Kiran Kesari, Carlos Castrillon, Shirley Wang, Brigid Woolery
 ​
 ## Description
 ​
