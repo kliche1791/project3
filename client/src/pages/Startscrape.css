@@ -1,11 +1,11 @@
 .searchBtn {
-  background-color: #20c997;
+  background-color: #1dc8cd;
   font-weight: bolder;
 }
 
 .mytitle {
-  color: #111;
-  font-weight: bolder;
+  color: #1dc8cd;
+  /* font-weight: bold; */
 }
 .scrollable {
   overflow-y: auto;

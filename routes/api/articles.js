@@ -12,7 +12,7 @@ router
   .route("/")
   .post((req, res) => {
     console.log("req.body = " + JSON.stringify(req.body).toUpperCase());
-    scraperController.scrapeReddit();
+    scraperController.scrapeReddit(req.body.title);
     // Making a request via axios for reddit's  board. The page's HTML is passed as the callback's third argument
     // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // // get the reddit topics and use it for comparing
@@ -108,47 +108,47 @@ router
     // });
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    scraperController.scrapeNYTimes();
+    scraperController.scrapeNYTimes(req.body.title);
 
-    // get the reddit topics and use it for comparing
-    axios.get("https://nytimes.com").then(function(response) {
-      // Load the HTML into cheerio and save it to a variable
-      // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
-      var $ = cheerio.load(response.data);
+    // // get the reddit topics and use it for comparing
+    // axios.get("https://nytimes.com").then(function(response) {
+    //   // Load the HTML into cheerio and save it to a variable
+    //   // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
+    //   var $ = cheerio.load(response.data);
 
-      // An empty array to save the data that we'll scrape
-      var ny_topicresults = [];
+    //   // An empty array to save the data that we'll scrape
+    //   var ny_topicresults = [];
 
-      // With cheerio, find each p-tag with the "tagline" class
-      // (i: iterator. element: the current element)
-      $(".css-cwdrld").each(function(i, element) {
-        // Save the text of the element in a "topic" variable
-        var ny_topic = $(element).text();
+    //   // With cheerio, find each p-tag with the "tagline" class
+    //   // (i: iterator. element: the current element)
+    //   $(".css-cwdrld").each(function(i, element) {
+    //     // Save the text of the element in a "topic" variable
+    //     var ny_topic = $(element).text();
 
-        console.log(
-          "topic from NYTimes here is = " +
-            ny_topic.toUpperCase() +
-            " and req body is " +
-            req.body.title.toUpperCase()
-        );
-      });
+    //     console.log(
+    //       "topic from NYTimes here is = " +
+    //         ny_topic.toUpperCase() +
+    //         " and req body is " +
+    //         req.body.title.toUpperCase()
+    //     );
+    //   });
 
-      if (req.body.title.toUpperCase() === ny_topic.toUpperCase()) {
-        console.log("strings match " + ny_topic);
+    //   if (req.body.title.toUpperCase() === ny_topic.toUpperCase()) {
+    //     console.log("strings match " + ny_topic);
 
-        // once we have the topic match to what user has inputted, we need to pull the news here using another axios call
+    //     // once we have the topic match to what user has inputted, we need to pull the news here using another axios call
 
-        console.log(
-          "\n***********************************\n" +
-            "When the search topic matches, Capture the name and link\n" +
-            "from NYTimes  website:" +
-            "\n***********************************\n"
-        );
-      }
+    //     console.log(
+    //       "\n***********************************\n" +
+    //         "When the search topic matches, Capture the name and link\n" +
+    //         "from NYTimes  website:" +
+    //         "\n***********************************\n"
+    //     );
+    //   }
 
-      // Log the results once you've looped through each of the elements found with cheerio
-      //   console.log(results);
-    });
+    //   // Log the results once you've looped through each of the elements found with cheerio
+    //   //   console.log(results);
+    // });
   })
   .get(articlesController.findAll);
 //   .post(articlesController.create);
