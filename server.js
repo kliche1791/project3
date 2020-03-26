@@ -10,7 +10,11 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const path = require('path');
 
-require('dotenv').config()
+if (process.env.NODE_ENV != "production") {
+  require('dotenv').config()
+}
+
+
 
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
