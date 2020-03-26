@@ -102,6 +102,9 @@ app.delete('/logout', (req, res) => {
   res.redirect('/login.js');
 })
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  });
 
 app.use(routes);
 
