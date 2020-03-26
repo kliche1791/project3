@@ -110,7 +110,7 @@ app.use(routes);
 // var collections = ["Article"];
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mynewsnow", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://heroku_55x65qf4:75q0aaobstocq5mkagjbac57gs@ds235378.mlab.com:35378/heroku_55x65qf4", {
   useNewUrlParser: true
 });
 
