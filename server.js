@@ -75,7 +75,7 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 }))
 
 app.get('/redirect-to-react', (req, res) => {
-  res.redirect('http://localhost:3000');
+  res.redirect('/');
 });
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
@@ -99,7 +99,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 
 app.delete('/logout', (req, res) => {
   req.logOut()
-  res.redirect('http://localhost:3001/login.js');
+  res.redirect('/login.js');
 })
 
 
